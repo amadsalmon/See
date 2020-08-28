@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = .photoLibrary
         imagePicker.allowsEditing = false
     }
     
@@ -30,6 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             guard let ciimage = CIImage(image: userPickedImage) else {
                 fatalError("Could not convert to CIImage.")
             }
+            detect(image: ciimage)
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
